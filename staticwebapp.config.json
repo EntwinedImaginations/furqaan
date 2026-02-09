@@ -1,17 +1,20 @@
 {
   "routes": [
-    { "route": "/privacy", "rewrite": "/privacy/index.html" }
+    {
+      "route": "/",
+      "redirect": "https://www.nurtaj.com.au",
+      "statusCode": 301
+    },
+    {
+      "route": "/privacy",
+      "rewrite": "/privacy/index.html"
+    }
   ],
+  "globalHeaders": {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload"
+  },
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/privacy/*"]
-  },
-  "responseOverrides": {
-    "404": { "rewrite": "/index.html", "statusCode": 404 }
-  },
-  "globalHeaders": {
-    "x-frame-options": "DENY",
-    "x-content-type-options": "nosniff",
-    "referrer-policy": "strict-origin-when-cross-origin"
+    "exclude": ["/privacy/*"]
   }
 }
